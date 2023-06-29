@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'card'
+
 class Deck
-  FACES = %w[2 3 4 5 6 7 8 9 10 J Q K A]
-  POINTS = { 'J': [10], 'Q': [10], 'K': [10], 'A': [1, 11] }
-  SUITS = %w[+ <> <3 ^]
+  FACES = %w[2 3 4 5 6 7 8 9 10 J Q K A].freeze
+  POINTS = { J: 10, Q: 10, K: 10, A: 11 }.freeze
+  SUITS = %w[+ <> <3 ^].freeze
 
   def initialize
     @cards = []
@@ -20,7 +22,7 @@ class Deck
   def create_deck
     FACES.each do |face|
       SUITS.each do |suit|
-        points = POINTS.has_key?(face) ? POINTS[face] : value.to_i
+        points = POINTS.key?(face.to_sym) ? POINTS[face.to_sym] : face.to_i
         @cards << Card.new(suit: suit, points: points, face: face)
       end
     end

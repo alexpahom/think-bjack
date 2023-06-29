@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class Card
-  attr_reader :suit, :face, :points
+  attr_reader :name, :points
 
   def initialize(suit:, face:, points:)
-    @suit = suit
-    @face = face
+    @name = "#{face}#{suit}"
     @points = points
   end
 end

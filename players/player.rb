@@ -11,13 +11,33 @@ class Player
   end
 
   def make_bet(amount)
-    bankroll -= amount
+    self.bankroll -= amount
     raise "#{name} не может сделать ставку" if bankroll.negative?
   end
 
   def show_cards
     hand.each do |card|
-      puts "#{card.suit}#{card.face} - #{card.points}"
+      puts "#{card.name} - #{card.points}"
     end
+  end
+
+  def show_total
+    puts "Очки: #{total}"
+  end
+
+  def show_balance
+    puts "Баланс: #{bankroll}"
+  end
+
+  def total
+    hand.map(&:points).sum
+  end
+
+  def show_info
+    puts name
+    show_cards
+    show_total
+    show_balance
+    puts
   end
 end

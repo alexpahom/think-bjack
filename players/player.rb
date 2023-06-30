@@ -34,7 +34,7 @@ class Player
     aces_count = hand.find_all(&:ace?).count
     ace_points_diff = Deck::POINTS[:A] - Deck::ACE_ALT_VALUE
 
-    while aces_count.positive? && max_points > 21
+    while aces_count.positive? && max_points > Blackjack::LIMIT
       max_points -= ace_points_diff
       aces_count -= 1
     end

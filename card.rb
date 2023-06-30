@@ -7,4 +7,8 @@ class Card
     @name = "#{face}#{suit}"
     @points = points
   end
+
+  def ace?
+    points == Deck::POINTS[:A]
+  end
 end

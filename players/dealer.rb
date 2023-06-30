@@ -3,7 +3,6 @@
 require_relative 'player'
 
 class Dealer < Player
-
   DEALER = 'Дилер'
 
   def initialize(bankroll)

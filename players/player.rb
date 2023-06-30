@@ -12,7 +12,7 @@ class Player
 
   def make_bet(amount)
     self.bankroll -= amount
-    raise ArgumentError.new(self.name.to_s) if bankroll.negative?
+    raise ArgumentError, name.to_s if bankroll.negative?
   end
 
   def show_cards
@@ -30,7 +30,15 @@ class Player
   end
 
   def total
-    hand.map(&:points).sum
+    max_points = hand.map(&:points).sum
+    aces_count = hand.find_all(&:ace?).count
+    ace_points_diff = Deck::POINTS[:A] - Deck::ACE_ALT_VALUE
+
+    while aces_count.positive? && max_points > 21
+      max_points -= ace_points_diff
+      aces_count -= 1
+    end
+    max_points
   end
 
   def show_info

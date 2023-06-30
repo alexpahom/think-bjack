@@ -12,7 +12,7 @@ class Player
 
   def make_bet(amount)
     self.bankroll -= amount
-    raise "#{name} не может сделать ставку" if bankroll.negative?
+    raise ArgumentError.new(self.name.to_s) if bankroll.negative?
   end
 
   def show_cards
@@ -38,6 +38,7 @@ class Player
     show_cards
     show_total
     show_balance
+    puts '-' * 15
     puts
   end
 end

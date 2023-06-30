@@ -15,5 +15,6 @@ class Dealer < Player
     puts '*' * 8
     puts '*' * 8
     show_balance
+    puts '-' * 15
   end
 end

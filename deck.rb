@@ -3,6 +3,8 @@
 require_relative 'card'
 
 class Deck
+  attr_reader :cards
+
   FACES = %w[2 3 4 5 6 7 8 9 10 J Q K A].freeze
   POINTS = { J: 10, Q: 10, K: 10, A: 11 }.freeze
   SUITS = %w[+ <> <3 ^].freeze
